@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      beers: ['Sculpin IPA', 'Pliny the Elder', 'Red Trolley', 'Mosaic IPA','Tripel Karmeliet', 'Allagash White'],
+      filterString: '',
+    };
+  }
+
+  handleChange = (filter) => {
+    this.setState({filterString: filter})
+
+  }
+
   render() {
+    let beersToDisplay = this.state.beers.filter( (element) => {
+      return element.includes(this.state.filterString);
+    }).map( (element) => {
+      return <h2>{element}</h2>
+    })
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input onChange={(event) => this.handleChange(event.target.value)} placeholder="Order A Beer" />
+        {beersToDisplay}
       </div>
     );
   }
