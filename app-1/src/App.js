@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   showDisplay = (event) => {
-    this.setState({display:event.target.value})
+    this.setState({display: event.target.value})
   }
 
   render() {
