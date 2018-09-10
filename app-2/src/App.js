@@ -11,12 +11,13 @@ class App extends Component {
   }
 
   render() {
-    let list = this.state.beers.map( e => {
-      return <h2>{e}</h2>
-    })
+    let displayedList = this.state.beers.map( element => {
+      return <h2>{element}</h2>
+    });
+
     return (
       <div className="App">
-        {list}
+        {displayedList}
       </div>
     );
   }
